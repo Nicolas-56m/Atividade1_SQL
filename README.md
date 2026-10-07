@@ -257,7 +257,7 @@ REFERENCES livro(id_livro);
 
 ___
 
-### Inserir os dados dos clientes dentro da tabela Aluno
+### Inserir os dados dos clientes dentro da tabela aluno
 ```SQL
 USE db_Biblioteca;
 
@@ -273,7 +273,7 @@ VALUES ("João", "joao@email.com", "Informática");
 
 ___
 
-### Inserir os dados dos clientes dentro da tabela Livro
+### Inserir os dados dos clientes dentro da tabela livro
 ```SQL
 USE db_Biblioteca;
 
@@ -289,7 +289,7 @@ VALUES("Harry Potter 3", "Cristiano", "2007-09-18");
 
 ___
 
-### Inserir os dados dos alunos/livros/empréstimos dentro da tabela empréstimo
+### Inserir os dados dos alunos/livros/empréstimos dentro da tabela emprestimo
 ```SQL
 USE db_Biblioteca;
 
@@ -310,7 +310,7 @@ VALUES(3, 3, "2026-11-09", "2026-12-10");
 SELECT * FROM aluno;
 ```
 
-### Listar empréstimos completas (mostrando nome do aluno e do livro)
+### Listar empréstimos completos (mostrando nome do aluno e do livro)
 ```SQL
 SELECT
     emprestimo.id_emprestimo,
