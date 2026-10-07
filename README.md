@@ -1,4 +1,4 @@
-# Atividade1_SQL
+# Atividade1_SQL - Compra de Produtos
 
 ## Modelo Entidade-Relacionamento (MER) feito no DRAW.IO
 <img width="709" height="825" alt="image" src="https://github.com/user-attachments/assets/a8d71537-0016-48e0-90f6-3f15376ba8a9" />
@@ -158,4 +158,164 @@ ___
 USE db_Tecnologia;
 
 DELETE FROM produto WHERE id_produto = 1;
+```
+
+# Atividade2_SQL - Sistema de Biblioteca
+
+## Modelo Entidade-Relacionamento (MER) feito no DRAW.IO
+<img width="697" height="837" alt="image" src="https://github.com/user-attachments/assets/a02ef893-ed90-45f5-ab32-75cb5e19e89c" />
+
+### Para criar o Banco de Dados
+```SQL
+CREATE DATABASE db_Bibloteca
+```
+
+___
+
+### Para criar Tabela Aluno
+```SQL
+CREATE TABLE aluno (
+    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
+    nome_aluno VARCHAR(100) NOT NULL,
+    email_aluno VARCHAR(100) NOT NULL,
+    curso aluno VARCHAR(100) NOT NULL
+);
+```
+
+___
+
+### Para criar Tabela Livro
+```SQL
+USE db_Biblioteca;
+
+CREATE TABLE livro (
+    id_livro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo_livro VARCHAR(100) NOT NULL,
+    autor_livro VARCHAR(100) NOT NULL,
+    dt_publicacao DATE NOT NULL
+);
+```
+
+___
+
+### Para criar Tabela Empréstimo
+```SQL
+USE db_Biblioteca;
+
+CREATE TABLE emprestimo (
+    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
+    id_livro INT NOT NULL,
+    dt_retirada DATE NOT NULL,
+    dt_devolucao DATE NOT NULL
+);
+```
+
+___
+
+### Transforma-las em Chaves Estrangeiras conforme o diagrama 
+```SQL
+USE db_Biblioteca;
+
+ALTER TABLE emprestimo
+ADD CONSTRAINT fk_emprestimo_aluno
+FOREIGN KEY (id_aluno) 
+REFERENCES aluno(id_aluno);
+```
+```SQL
+USE db_Biblioteca;
+
+ALTER TABLE emprestimo
+ADD CONSTRAINT fk_emprestimo_livro
+FOREIGN KEY (id_livro) 
+REFERENCES aluno(id_livro);
+```
+
+___
+
+### Inserir os dados dos clientes dentro da tabela Aluno
+```SQL
+USE db_Biblioteca;
+
+INSERT INTO aluno(nome_aluno, email_aluno, curso_aluno)
+VALUES("Neymar Augusto", "neymar@email.com", "Mecatrônica");
+
+INSERT INTO aluno(nome_aluno, email_aluno, curso_aluno)
+VALUES("Cristiano Ronaldo", "cristiano@email.com", "Tecnologia da Informação");
+```
+
+___
+
+### Inserir os dados dos clientes dentro da tabela Livro
+```SQL
+USE db_Biblioteca;
+
+INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
+VALUES("Harry Potter 1", "Neymar", 2026-10-07);
+
+INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
+VALUES("Harry Potter 2", "Messi", 2026-09-16);
+```
+
+___
+
+### Inserir os dados dos clientes dentro da tabela Empréstimo
+```SQL
+USE db_Biblioteca;
+
+INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_publicacao)
+VALUES(1, 1, "2026-10-06", "2005-10-09");
+
+INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_publicacao)
+VALUES(2, 2, "2026-10-07", "2000-12-06");
+```
+## CRUD
+
+### Listar todos os alunos
+```SQL
+SELECT * FROM aluno;
+```
+
+### Listar empréstimos completas (mostrando nome do aluno e do livro)
+```SQL
+SELECT * FROM emprestimo;
+```
+
+___
+
+### Atualizar o nome do livro com ID 1
+```SQL
+USE db_Biblioteca;
+
+UPDATE livro
+SET titulo_livro = "Harry Potter 3"
+WHERE id_livro = 1;
+```
+
+___
+
+### Atualizar o e-mail do aluno com ID 1
+```SQL
+USE db_Biblioteca;
+
+UPDATE aluno 
+SET = "augusto@email.com"
+WHERE id_aluno = 1;
+```
+
+___
+
+### Apagar um empréstimo com ID 1
+```SQL
+USE db_Biblioteca;
+
+DELETE FROM emprestimo WHERE id_emprestimo = 1;
+```
+
+___
+
+### Apagar um livro com ID 1 (só é possível se não houver espréstimos atreladas a ele)
+```SQL
+USE db_Biblioteca;
+
+DELETE FROM livro WHERE id_livro = 1;
 ```
