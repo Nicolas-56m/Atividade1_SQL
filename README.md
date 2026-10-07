@@ -167,7 +167,7 @@ DELETE FROM produto WHERE id_produto = 1;
 
 ### Para criar o Banco de Dados
 ```SQL
-CREATE DATABASE db_Bibloteca
+CREATE DATABASE db_Biblioteca
 ```
 
 ___
@@ -227,7 +227,7 @@ USE db_Biblioteca;
 ALTER TABLE emprestimo
 ADD CONSTRAINT fk_emprestimo_livro
 FOREIGN KEY (id_livro) 
-REFERENCES aluno(id_livro);
+REFERENCES livro(id_livro);
 ```
 
 ___
@@ -262,10 +262,10 @@ ___
 ```SQL
 USE db_Biblioteca;
 
-INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_publicacao)
+INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
 VALUES(1, 1, "2026-10-06", "2005-10-09");
 
-INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_publicacao)
+INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
 VALUES(2, 2, "2026-10-07", "2000-12-06");
 ```
 ## CRUD
