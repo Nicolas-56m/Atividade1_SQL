@@ -289,7 +289,7 @@ VALUES("Harry Potter 3", "Cristiano", "2007-09-18");
 
 ___
 
-### Inserir os dados dos clientes dentro da tabela Empréstimo
+### Inserir os dados dos alunos/livros/empréstimos dentro da tabela empréstimo
 ```SQL
 USE db_Biblioteca;
 
@@ -300,7 +300,7 @@ INSERT INTO emprestimo(id_aluno, id_livro, dt_retirada, dt_devolucao)
 VALUES(2, 2, "2026-10-07", "2026-11-12");
 
 INSERT INTO emprestimo(id_aluno, id_livro, dt_retirada, dt_devolucao)
-VALUES(3, 3, "2026-11-09", "2000-12-10");
+VALUES(3, 3, "2026-11-09", "2026-12-10");
 ```
 
 ## CRUD
