@@ -178,7 +178,7 @@ CREATE TABLE aluno (
     id_aluno INT PRIMARY KEY AUTO_INCREMENT,
     nome_aluno VARCHAR(100) NOT NULL,
     email_aluno VARCHAR(100) NOT NULL,
-    curso aluno VARCHAR(100) NOT NULL
+    curso_aluno VARCHAR(100) NOT NULL
 );
 ```
 
