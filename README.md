@@ -1,4 +1,4 @@
 # Atividade1_SQL
 
 ## Modelo Entidade-Relacionamento (MER) feito no DRAW.IO
-<img width="914" height="882" alt="image" src="https://github.com/user-attachments/assets/a4bc2766-b170-4c54-9e67-ea4059e9d10e" />
+<img width="830" height="837" alt="image" src="https://github.com/user-attachments/assets/ddacb25a-94f1-4a45-b4a0-5f734084ac31" />
