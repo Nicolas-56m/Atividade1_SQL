@@ -82,3 +82,25 @@ VALUES("Carlos Silva", "carlos@email.com", "19999998888");
 INSERT INTO cliente(nome_cliene, email, telefone)
 VALUES("Silvano Salles", "sales@email.com", "12399995558");
 ```
+
+### Inserir os dados dos clientes dentro da tabela Produto
+```SQL
+USE db_Tecnologia;
+
+INSERT INTO produto(nome_produto, preco)
+VALUES("Teclado Mecânico", 250.00);
+
+INSERT INTO produto(nome_produto, preco)
+VALUES("Cubo Mecânico", 100.00);
+```
+
+### Inserir os dados dos clientes dentro da tabela Venda
+```SQL
+USE db_Tecnologia;
+
+INSERT INTO venda(id_cliente, id_produto, dt_entrada, qtd)
+VALUES(1, 1, "2026-10-06", 2);
+
+INSERT INTO venda(id_cliente, id_produto, dt_entrada, qtd)
+VALUES(2, 2, "2026-10-07", 3);
+```
