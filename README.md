@@ -14,7 +14,7 @@ ___
 ```SQL
 USE db_Tecnologia;
 
-CREATE TABLE cliente(
+CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nome_cliente VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
@@ -76,13 +76,15 @@ ___
 ```SQL
 USE db_Tecnologia;
 
-INSERT INTO cliente(nome_cliene, email, telefone)
-VALUES("Carlos Silva", "carlos@email.com", "19999998888");
+INSERT INTO cliente (nome_cliente, email, telefone)
+VALUES ("Carlos Alberto", "alberto@email.com", "19962774499");
 
-INSERT INTO cliente(nome_cliene, email, telefone)
+INSERT INTO cliente(nome_cliente, email, telefone)
 VALUES("Silvano Salles", "sales@email.com", "12399995558");
 ```
 
+INSERT INTO cliente (nome_cliente, email, telefone)
+VALUES ("João", "joao@email.com", "19988555888");
 ___
 
 ### Inserir os dados dos clientes dentro da tabela Produto
@@ -94,6 +96,9 @@ VALUES("Teclado Mecânico", 250.00);
 
 INSERT INTO produto(nome_produto, preco)
 VALUES("Cubo Mecânico", 100.00);
+
+INSERT INTO produto(nome_produto, preco)
+VALUES ("Teclado", 150.00);
 ```
 
 ___
@@ -107,6 +112,9 @@ VALUES(1, 1, "2026-10-06", 2);
 
 INSERT INTO venda(id_cliente, id_produto, dt_entrada, qtd)
 VALUES(2, 2, "2026-10-07", 3);
+
+INSERT INTO venda (id_cliente, id_produto, dt_entrada, qtd)
+VALUES (3, 3, "2026-10-03", 1);
 ```
 ## CRUD
 
@@ -117,47 +125,59 @@ SELECT * FROM cliente;
 
 ### Listar vendas completas (mostrando nome do cliente e do produto)
 ```SQL
-SELECt * from venda;
+SELECT
+    venda.id_venda,
+    cliente.nome_cliente,
+    produto.nome_produto,
+    venda.dt_entrada,
+    venda.qtd
+FROM venda
+INNER JOIN cliente
+    ON venda.id_cliente = cliente.id_cliente
+INNER JOIN produto
+    ON venda.id_produto = produto.id_produto;
 ```
 
 ___
 
-### Atualizar o preço do produto com ID 1
+### Atualizar o preço de um produto
 ```SQL
 USE db_Tecnologia;
 
-UPDATE produto 
-SET preco = 280.00 
+UPDATE produto
+SET preco = 3600.00
 WHERE id_produto = 1;
 ```
 
 ___
 
-### Atualizar o telefone do cliente com ID 1
+### Atualizar o telefone de um cliente
 ```SQL
 USE db_Tecnologia;
 
-UPDATE cliente 
-SET telefone = "19977776666"
+UPDATE cliente
+SET telefone = "19966000666"
 WHERE id_cliente = 1;
 ```
 
 ___
 
-### Apagar uma venda com ID 1
+### Apagar uma venda
 ```SQL
 USE db_Tecnologia;
 
-DELETE FROM venda WHERE id_venda = 1;
+DELETE FROM venda
+WHERE id_venda = 1;
 ```
 
 ___
 
-### Apagar um produto com ID 1 (só é possível se não houver vendas atreladas a ele
+### Apagar um produto (Só funciona se ele não estiver sendo usado em nenhuma venda)
 ```SQL
 USE db_Tecnologia;
 
-DELETE FROM produto WHERE id_produto = 1;
+DELETE FROM produto
+WHERE id_produto = 3;
 ```
 
 # Atividade2_SQL - Sistema de Biblioteca
@@ -167,13 +187,15 @@ DELETE FROM produto WHERE id_produto = 1;
 
 ### Para criar o Banco de Dados
 ```SQL
-CREATE DATABASE db_Biblioteca
+CREATE DATABASE db_Biblioteca;
 ```
 
 ___
 
 ### Para criar Tabela Aluno
 ```SQL
+USE db_Biblioteca;
+
 CREATE TABLE aluno (
     id_aluno INT PRIMARY KEY AUTO_INCREMENT,
     nome_aluno VARCHAR(100) NOT NULL,
@@ -203,7 +225,8 @@ ___
 USE db_Biblioteca;
 
 CREATE TABLE emprestimo (
-    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
+    id_emprestimo INT PRIMARY KEY AUTO_INCREMENT,
+    id_aluno INT NOT NULL,
     id_livro INT NOT NULL,
     dt_retirada DATE NOT NULL,
     dt_devolucao DATE NOT NULL
@@ -236,11 +259,14 @@ ___
 ```SQL
 USE db_Biblioteca;
 
-INSERT INTO aluno(nome_aluno, email_aluno, curso_aluno)
-VALUES("Neymar Augusto", "neymar@email.com", "Mecatrônica");
+INSERT INTO aluno (nome_aluno, email_aluno, curso_aluno)
+VALUES ("Neymar Salles", "salles@email.com", "Desenvolvimento de Sistemas");
 
 INSERT INTO aluno(nome_aluno, email_aluno, curso_aluno)
 VALUES("Cristiano Ronaldo", "cristiano@email.com", "Tecnologia da Informação");
+
+INSERT INTO aluno(nome_aluno, email_aluno, curso_aluno)
+VALUES ("João", "joao@email.com", "Informática");
 ```
 
 ___
@@ -250,10 +276,13 @@ ___
 USE db_Biblioteca;
 
 INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
-VALUES("Harry Potter 1", "Neymar", 2026-10-07);
+VALUES("Harry Potter 1", "Neymar", 2005-10-07);
 
 INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
-VALUES("Harry Potter 2", "Messi", 2026-09-16);
+VALUES("Harry Potter 2", "Messi", 2006-09-16);
+
+INSERT INTO livro (titulo_livro, autor_livro, dt_publicacao)
+VALUES("Harry Potter 3", "Cristiano", "2007-09-18");
 ```
 
 ___
@@ -267,6 +296,9 @@ VALUES(1, 1, "2026-10-06", "2005-10-09");
 
 INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
 VALUES(2, 2, "2026-10-07", "2000-12-06");
+
+INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
+VALUES(3, 3, "2026-11-09", "2000-12-10");
 ```
 ## CRUD
 
@@ -277,45 +309,57 @@ SELECT * FROM aluno;
 
 ### Listar empréstimos completas (mostrando nome do aluno e do livro)
 ```SQL
-SELECT * FROM emprestimo;
+SELECT
+    emprestimo.id_emprestimo,
+    aluno.nome_aluno,
+    livro.titulo_livro,
+    emprestimo.dt_retirada,
+    emprestimo.dt_devolucao
+FROM emprestimo
+INNER JOIN aluno
+    ON emprestimo.id_aluno = aluno.id_aluno
+INNER JOIN livro
+    ON emprestimo.id_livro = livro.id_livro;
 ```
 
 ___
 
-### Atualizar o nome do livro com ID 1
+### Atualizar o título do livro
 ```SQL
 USE db_Biblioteca;
 
 UPDATE livro
-SET titulo_livro = "Harry Potter 3"
+SET titulo_livro = "Harry Potter e a Pedra Filosofal"
 WHERE id_livro = 1;
 ```
 
 ___
 
-### Atualizar o e-mail do aluno com ID 1
+### Atualizar o e-mail do aluno
 ```SQL
 USE db_Biblioteca;
 
-UPDATE aluno 
-SET email_aluno = "augusto@email.com"
+UPDATE aluno
+SET email_aluno = "novoemail@email.com"
 WHERE id_aluno = 1;
 ```
 
 ___
 
-### Apagar um empréstimo com ID 1
+### Apagar um empréstimo
 ```SQL
 USE db_Biblioteca;
 
-DELETE FROM emprestimo WHERE id_emprestimo = 1;
+DELETE FROM emprestimo
+WHERE id_emprestimo = 1;
 ```
 
 ___
 
-### Apagar um livro com ID 1 (só é possível se não houver espréstimos atreladas a ele)
+### Apagar um livro (Só funciona se o livro não estiver relacionado a nenhum empréstimo.)
 ```SQL
 USE db_Biblioteca;
 
-DELETE FROM livro WHERE id_livro = 1;
+DELETE FROM livro
+WHERE id_livro = 2;
 ```
