@@ -50,6 +50,8 @@ CREATE TABLE venda (
 );
 ```
 
+___
+
 ### Transforma-las em Chaves Estrangeiras conforme o diagrama 
 ```SQL
 USE db_Tecnologia;
@@ -65,5 +67,18 @@ USE db_Tecnologia;
 ALTER TABLE venda
 ADD CONSTRAINT fk_venda_produto
 FOREIGN KEY (id_produto) 
-```
 REFERENCES produto(id_produto);
+```
+
+___
+
+### Inserir os dados dos clientes dentro da tabela Cliente
+```SQL
+USE db_Tecnologia;
+
+INSERT INTO cliente(nome_cliene, email, telefone)
+VALUES("Carlos Silva", "carlos@email.com", "19999998888");
+
+INSERT INTO cliente(nome_cliene, email, telefone)
+VALUES("Silvano Salles", "sales@email.com", "12399995558");
+```
