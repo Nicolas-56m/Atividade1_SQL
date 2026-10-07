@@ -298,7 +298,7 @@ ___
 USE db_Biblioteca;
 
 UPDATE aluno 
-SET email = "augusto@email.com"
+SET email_aluno = "augusto@email.com"
 WHERE id_aluno = 1;
 ```
 
