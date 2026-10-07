@@ -1,3 +1,5 @@
+- OBS: os arquivos tão com alguns códigos errados (aqui no REDME ta certo)
+
 # Atividade1_SQL - Compra de Produtos
 
 ## Modelo Entidade-Relacionamento (MER) feito no DRAW.IO
