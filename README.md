@@ -1,4 +1,4 @@
-- OBS: os arquivos tão com alguns códigos errados (aqui no REDME ta certo)
+- OBS: Os arquivos estão com alguns códigos errados. Aqui no README está tudo corrigido; eu vou corrigir os arquivos na terça-feira.
 
 # Atividade1_SQL - Compra de Produtos
 
@@ -83,13 +83,13 @@ VALUES ("Carlos Alberto", "alberto@email.com", "19962774499");
 
 INSERT INTO cliente(nome_cliente, email, telefone)
 VALUES("Silvano Salles", "sales@email.com", "12399995558");
-```
 
 INSERT INTO cliente (nome_cliente, email, telefone)
 VALUES ("João", "joao@email.com", "19988555888");
+```
 ___
 
-### Inserir os dados dos clientes dentro da tabela Produto
+### Inserir os dados dos produtos dentro da tabela Produto
 ```SQL
 USE db_Tecnologia;
 
@@ -105,7 +105,7 @@ VALUES ("Teclado", 150.00);
 
 ___
 
-### Inserir os dados dos clientes dentro da tabela Venda
+### Inserir os dados das vendas dentro da tabela Venda
 ```SQL
 USE db_Tecnologia;
 
@@ -278,10 +278,10 @@ ___
 USE db_Biblioteca;
 
 INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
-VALUES("Harry Potter 1", "Neymar", 2005-10-07);
+VALUES("Harry Potter 1", "Neymar", "2005-10-07");
 
 INSERT INTO livro(titulo_livro, autor_livro, dt_publicacao)
-VALUES("Harry Potter 2", "Messi", 2006-09-16);
+VALUES("Harry Potter 2", "Messi", "2006-09-16");
 
 INSERT INTO livro (titulo_livro, autor_livro, dt_publicacao)
 VALUES("Harry Potter 3", "Cristiano", "2007-09-18");
@@ -293,15 +293,16 @@ ___
 ```SQL
 USE db_Biblioteca;
 
-INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
-VALUES(1, 1, "2026-10-06", "2005-10-09");
+INSERT INTO emprestimo(id_aluno, id_livro, dt_retirada, dt_devolucao)
+VALUES(1, 1, "2026-10-06", "2026-10-09");
 
-INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
-VALUES(2, 2, "2026-10-07", "2000-12-06");
+INSERT INTO emprestimo(id_aluno, id_livro, dt_retirada, dt_devolucao)
+VALUES(2, 2, "2026-10-07", "2026-11-12");
 
-INSERT INTO venda(id_aluno, id_livro, dt_retirada, dt_devolucao)
+INSERT INTO emprestimo(id_aluno, id_livro, dt_retirada, dt_devolucao)
 VALUES(3, 3, "2026-11-09", "2000-12-10");
 ```
+
 ## CRUD
 
 ### Listar todos os alunos
